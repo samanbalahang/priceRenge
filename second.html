@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - A Pen by Shantanu Jana</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      background-color: rgb(5, 101, 180);
+      font-family: sans-serif;
+    }
+    .slider{
+      top: 50%;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgb(255, 255, 255);
+      padding: 30px;
+      border-radius: 3px;
+    }
+    .range-slider {
+  width: 300px;
+  text-align: center;
+  position: relative;
+  padding-bottom: 20px;
+}
+p{
+  text-align: center;
+  margin-top: -10px;
+  font-size: 30px;
+}
+.range-slider .rangeValues {
+  display: block;
+  box-shadow: 0 0 20px rgba(0,139,253,0.25);
+  padding: 20px;
+  font-size: 22px;
+  margin-bottom: 35px;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  border: 1px solid white;
+  width: 300px;
+  position: absolute;
+  left: 0;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 300px;
+  height: 5px;
+  background: #ddd;
+  border: none;
+  border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: #21c1ff;
+  margin-top: -6px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ccc;
+}
+
+
+/*The following CSS code is not necessary for everyone*/
+
+input[type=range]::-moz-range-track {
+  width: 300px;
+  height: 5px;
+  background: #ddd;
+  border: none;
+  border-radius: 3px;
+}
+
+input[type=range]::-moz-range-thumb {
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #21c1ff;
+}
+
+/*hide the outline behind the border*/
+input[type=range]:-moz-focusring {
+  outline: 1px solid white;
+  outline-offset: -1px;
+}
+
+input[type=range]::-ms-track {
+  width: 300px;
+  height: 5px;
+  /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+  background: transparent;
+  /*leave room for the larger thumb to overflow with a transparent border */
+  border-color: transparent;
+  border-width: 6px 0;
+  /*remove default tick marks*/
+  color: transparent;
+  z-index: -4;
+}
+
+input[type=range]::-ms-fill-lower {
+  background: #777;
+  border-radius: 10px;
+}
+
+input[type=range]::-ms-fill-upper {
+  background: #ddd;
+  border-radius: 10px;
+}
+
+input[type=range]::-ms-thumb {
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #21c1ff;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+  background: #888;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+  background: #ccc;
+}
+  </style>
+</head>
+<body>
+  <div class="slider">
+  <p>Price Range</p>
+<div class="range-slider">
+  <span class="rangeValues"></span>
+  <input value="1000" min="1000" max="50000" step="500" type="range">
+  <input value="50000" min="1000" max="50000" step="500" type="range">
+</div>
+</div>
+<script>
+  function getVals(){
+  // Get slider values
+  let parent = this.parentNode;
+  let slides = parent.getElementsByTagName("input");
+    let slide1 = parseFloat( slides[0].value );
+    let slide2 = parseFloat( slides[1].value );
+  // Neither slider will clip the other, so make sure we determine which is larger
+  if( slide1 > slide2 ){ let tmp = slide2; slide2 = slide1; slide1 = tmp; }
+  
+  let displayElement = parent.getElementsByClassName("rangeValues")[0];
+      displayElement.innerHTML = "$" + slide1 + " - $" + slide2;
+}
+
+window.onload = function(){
+  // Initialize Sliders
+  let sliderSections = document.getElementsByClassName("range-slider");
+      for( let x = 0; x < sliderSections.length; x++ ){
+        let sliders = sliderSections[x].getElementsByTagName("input");
+        for( let y = 0; y < sliders.length; y++ ){
+          if( sliders[y].type ==="range" ){
+            sliders[y].oninput = getVals;
+            // Manually trigger event first time to display values
+            sliders[y].oninput();
+          }
+        }
+      }
+}
+</script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
