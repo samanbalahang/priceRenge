@@ -1,0 +1,162 @@
+body.ui-slider-active {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+.box {
+  --primary: #275efe;
+  --headline: #3F4656;
+  --text: #99A3BA;
+  width: 100%;
+  max-width: 312px;
+  padding: 36px 32px 48px 32px;
+  background: #fff;
+  border-radius: 9px;
+  box-shadow: 0 1px 4px rgba(18, 22, 33, 0.12);
+}
+.box h3 {
+  font-family: inherit;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  color: var(--headline);
+}
+.box h3 span {
+  font-weight: 500;
+}
+.box .values div,
+.box small div {
+  display: inline-block;
+  vertical-align: top;
+}
+.box .values {
+  margin: 0;
+  font-weight: 500;
+  color: var(--primary);
+}
+.box .values > div:first-child {
+  margin-right: 2px;
+}
+.box .values > div:last-child {
+  margin-left: 2px;
+}
+.box small {
+  color: var(--text);
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+}
+.box .slider {
+  margin-top: 40px;
+}
+
+.slider {
+  --primary: #275efe;
+  --handle: #fff;
+  --handle-active: #becfff;
+  --handle-hover: #e9efff;
+  --handle-border: 2px solid var(--primary);
+  --line: #cdd9ed;
+  --line-active: var(--primary);
+  height: 23px;
+  width: 100%;
+  position: relative;
+  pointer-events: none;
+}
+.slider .ui-slider-handle {
+  --y: 0;
+  --background: var(--handle);
+  cursor: -webkit-grab;
+  cursor: grab;
+  -webkit-tap-highlight-color: transparent;
+  top: 0;
+  width: 23px;
+  height: 23px;
+  transform: translateX(-50%);
+  position: absolute;
+  outline: none;
+  display: block;
+  pointer-events: auto;
+}
+.slider .ui-slider-handle div {
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  transition: background 0.4s ease;
+  transform: translateY(calc(var(--y) * 1px));
+  border: var(--handle-border);
+  background: var(--background);
+}
+.slider .ui-slider-handle:hover {
+  --background: var(--handle-hover);
+}
+.slider .ui-slider-handle:active {
+  --background: var(--handle-active);
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+.slider svg {
+  --stroke: var(--line);
+  display: block;
+  height: 83px;
+}
+.slider svg path {
+  fill: none;
+  stroke: var(--stroke);
+  stroke-width: 1;
+}
+.slider .active, .slider > svg {
+  position: absolute;
+  top: -30px;
+  height: 83px;
+}
+.slider > svg {
+  left: 0;
+  width: 100%;
+}
+.slider .active {
+  position: absolute;
+  overflow: hidden;
+  left: calc(var(--l) * 1px);
+  right: calc(var(--r) * 1px);
+}
+.slider .active svg {
+  --stroke: var(--line-active);
+  position: relative;
+  left: calc(var(--l) * -1px);
+  right: calc(var(--r) * -1px);
+}
+.slider .active svg path {
+  stroke-width: 2;
+}
+
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: inherit;
+}
+*:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", Arial;
+  background: #CDD9ED;
+}
+body .dribbble {
+  position: fixed;
+  display: block;
+  right: 20px;
+  bottom: 20px;
+}
+body .dribbble img {
+  display: block;
+  height: 28px;
+}
